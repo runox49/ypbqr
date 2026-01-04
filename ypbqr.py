@@ -40,12 +40,12 @@ st.download_button(
 )
 
 # 7. Mobile Deep Links
-st.write("---")
-st.subheader("Open Bank App")
-cols = st.columns(2)
-with cols[0]:
-    st.link_button("K PLUS", "kplus://")
-    st.link_button("SCB EASY", "scbeasy://")
-with cols[1]:
-    st.link_button("Krungthai", "ktbnext://")
-    st.link_button("Bangkok Bank", "bualuangkplus://")
+#st.write("---")
+#st.subheader("Open Bank App")
+#cols = st.columns(2)
+#with cols[0]:
+#    st.link_button("K PLUS", "kplus://")
+#    st.link_button("SCB EASY", "scbeasy://")
+#with cols[1]:
+#    st.link_button("Krungthai", "ktbnext://")
+#    st.link_button("Bangkok Bank", "bualuangkplus://")
