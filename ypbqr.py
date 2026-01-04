@@ -2,8 +2,8 @@ import streamlit as st
 from promptpay import qrcode
 
 # --- DIRECT CONFIGURATION (No Secrets) ---
-MY_PROMPTPAY_ID = "081XXXXXXX"  # <-- PUT YOUR PHONE OR ID HERE
-MY_NAME = "Your Name/Shop Name"
+MY_PROMPTPAY_ID = "0864182802"  # <-- PUT YOUR PHONE OR ID HERE
+MY_NAME = "Quan"
 
 st.set_page_config(page_title="Thai QR Pay", page_icon="฿")
 
