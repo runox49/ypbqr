@@ -17,7 +17,7 @@ st.markdown("""
 st.title("฿ Thai QR Payment")
 
 # --- 1. Configuration ---
-PROMPTPAY_ID = "081XXXXXXX"  # Your Phone Number or National ID
+PROMPTPAY_ID = "0864182802"  # Your Phone Number or National ID
 
 # --- 2. User Input ---
 amount = st.number_input("Enter Amount (THB)", min_value=1.0, value=100.0, step=0.01)
