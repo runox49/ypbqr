@@ -9,7 +9,7 @@ MY_PROMPTPAY_ID = "0864182802"  # Replace with your ID
 MY_NAME = "Quan** Shen"
 
 # 2. Input Amount
-amount = st.number_input("Amount (THB)", min_value=1.0, value=100.0, step=0.01)
+amount = st.number_input("Amount (THB)", min_value=10.0, value=100.0, step=1.00)
 
 # 3. Generate QR Payload & Image
 payload = qrcode.generate_payload(MY_PROMPTPAY_ID, amount)
