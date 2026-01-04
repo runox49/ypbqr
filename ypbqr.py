@@ -8,7 +8,7 @@ from PIL import Image
 # 1. Configuration
 # Feel free to change these directly
 MY_PROMPTPAY_ID = "0864182802" 
-MY_NAME = "Quan** Shen"
+MY_NAME = "Quanxxx Shen"
 
 st.set_page_config(page_title="Thai QR Payment", page_icon="฿")
 st.title("฿ PromptPay Payment")
