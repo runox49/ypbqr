@@ -5,8 +5,8 @@ import numpy as np
 from PIL import Image
 
 # 1. Configuration
-MY_PROMPTPAY_ID = "081XXXXXXX"  # Replace with your ID
-MY_NAME = "Your Name"
+MY_PROMPTPAY_ID = "0864182802"  # Replace with your ID
+MY_NAME = "Quan** Shen"
 
 st.title("Thai QR Payment")
 amount = st.number_input("Amount (THB)", min_value=1.0, value=100.0, step=0.01)
