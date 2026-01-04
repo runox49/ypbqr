@@ -39,6 +39,26 @@ st.download_button(
     mime="image/png"
 )
 
+st.write("---")
+st.subheader("📬 Contact for Support")
+
+# Configuration - Change these to your actual details
+LINE_ID = "runoxx" 
+MY_EMAIL = "flintcheen@gmail.com"
+
+col1, col2 = st.columns(2)
+
+with col1:
+    # Line Link
+    line_url = f"https://line.me/ti/p/cv5Oni1o3V"
+    st.link_button("💬 Add LINE", line_url, use_container_width=True)
+
+with col2:
+    # Email Link with Pre-filled Subject
+    # %20 is used for spaces in the URL
+    subject = "Payment Slip for PromptPay"
+    email_url = f"mailto:{MY_EMAIL}?subject={subject.replace(' ', '%20')}"
+    st.link_button("📧 Send Email", email_url, use_container_width=True)
 # 7. Mobile Deep Links
 #st.write("---")
 #st.subheader("Open Bank App")
