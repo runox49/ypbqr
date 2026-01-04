@@ -1,60 +1,42 @@
 import streamlit as st
 from promptpay import qrcode
 from io import BytesIO
-from PIL import Image
 
-# Page Config for Mobile
-st.set_page_config(page_title="PromptPay Checkout", page_icon="฿", layout="centered")
+# --- CONFIGURATION ---
+MY_NAME = "MR. SOMCHAI PROMPT"
+MY_PHONE = "0812345678"  # Linked to your bank
+BANK_NAME = "Kasikornbank (KBank)"
+ACCOUNT_NUMBER = "123-4-56789-0"
 
-# Custom CSS to make buttons look better on mobile
-st.markdown("""
-    <style>
-    div.stButton > button:first-child { width: 100%; height: 50px; border-radius: 10px; }
-    .bank-header { font-weight: bold; margin-top: 20px; margin-bottom: 10px; text-align: center; }
-    </style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="Thai QR Pay", page_icon="฿")
 
-st.title("฿ Thai QR Payment")
+# UI Header
+st.title("Thai QR Payment")
+st.markdown(f"**Recipient:** {MY_NAME}")
+st.write(f"**Bank:** {BANK_NAME}")
 
-# --- 1. Configuration ---
-PROMPTPAY_ID = "0864182802"  # Your Phone Number or National ID
+# Amount Input
+amount = st.number_input("Amount (THB)", min_value=1.0, value=100.0, step=0.01)
 
-# --- 2. User Input ---
-amount = st.number_input("Enter Amount (THB)", min_value=1.0, value=100.0, step=0.01)
-
-# --- 3. Generate QR Code ---
-payload = qrcode.generate_payload(PROMPTPAY_ID, amount)
-# We generate the image in memory to allow downloading
+# Generate QR
+payload = qrcode.generate_payload(MY_PHONE, amount)
 qr_img = qrcode.to_image(payload)
 
-# Buffer for Streamlit download button
-buf = BytesIO()
-qr_img.save(buf, format="PNG")
-byte_im = buf.getvalue()
+# Display QR
+st.image(qr_img, caption="Scan to Pay", width=300)
 
-# --- 4. Display ---
+# Action Buttons
+st.download_button("💾 Save QR to Gallery", data=qrcode.to_bytes(payload), file_name="pay_me.png")
+
 st.write("---")
-st.subheader(f"Total: {amount:,.2f} Baht")
-st.image(qr_img, caption="Scan with any Banking App", use_container_width=True)
+st.subheader("Can't scan?")
+st.code(ACCOUNT_NUMBER, language="text")
+st.caption("Copy the account number above and paste it into your Bank Transfer menu.")
 
-# --- 5. Mobile Utilities ---
-st.download_button(
-    label="💾 Save QR to Photos",
-    data=byte_im,
-    file_name="promptpay_qr.png",
-    mime="image/png",
-    help="Save this to your gallery to scan it inside your bank app"
-)
-
-st.markdown("<p class='bank-header'>Quick Launch Bank App</p>", unsafe_allow_html=True)
-
-# Deep Link Buttons
-col1, col2 = st.columns(2)
-with col1:
-    st.link_button("K PLUS (KBank)", "kplus://")
-    st.link_button("SCB EASY", "scbeasy://")
-with col2:
-    st.link_button("Krungthai NEXT", "ktbnext://")
-    st.link_button("Bualuang (BBL)", "bualuangkplus://")
-
-st.info("💡 **Tip:** After saving the QR, open your bank app, select 'Scan', and choose the image from your gallery.")
+# Bank App Shortcuts
+st.write("Open Bank App:")
+cols = st.columns(4)
+with cols[0]: st.link_button("K+", "kplus://")
+with cols[1]: st.link_button("SCB", "scbeasy://")
+with cols[2]: st.link_button("KTB", "ktbnext://")
+with cols[3]: st.link_button("BBL", "bualuangkplus://")
