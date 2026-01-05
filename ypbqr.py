@@ -28,15 +28,21 @@ qr_pil_image = qrcode.to_image(payload).convert("RGB")
 # 5. Display (Using NumPy for stability)
 st.image(np.array(qr_pil_image), caption="Scan with your Bank App", width=300)
 
+# D. Setup Timestamp for Thailand (UTC+7)
+tz_thai = timezone(timedelta(hours=7))
+# Result: slip_20260105_2130.png
+timestamp = datetime.now(tz_thai).strftime("%Y%m%d_%H%M") 
+dynamic_filename = f"slip_{timestamp}.png"
+
 # 6. FIXED: Download Button using BytesIO buffer
 buf = BytesIO()
 qr_pil_image.save(buf, format="PNG")
 byte_im = buf.getvalue()
 
 st.download_button(
-    label="💾 Download QR to Photos",
+    label=f"💾 Download QR as {dynamic_filename}",
     data=byte_im,
-    file_name="payment_qr.png",
+    file_name=dynamic_filename, # Dynamic name applied here
     mime="image/png"
 )
 
