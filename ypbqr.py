@@ -33,7 +33,7 @@ qr_pil_image.save(buf, format="PNG")
 byte_im = buf.getvalue()
 
 st.download_button(
-    label="💾 Save QR to Photos",
+    label="💾 Download QR to Photos",
     data=byte_im,
     file_name="payment_qr.png",
     mime="image/png"
