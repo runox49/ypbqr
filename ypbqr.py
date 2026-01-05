@@ -31,7 +31,7 @@ st.image(np.array(qr_pil_image), caption="Scan with your Bank App", width=300)
 # D. Setup Timestamp for Thailand (UTC+7)
 tz_thai = timezone(timedelta(hours=7))
 # Result: slip_20260105_2130.png
-timestamp = datetime.now(tz_thai).strftime("%Y%m%d_%H%M") 
+timestamp = datetime.now(tz_thai).strftime("%d%m%y_%H%M%S") 
 dynamic_filename = f"slip_{timestamp}.png"
 
 # 6. FIXED: Download Button using BytesIO buffer
