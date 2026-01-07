@@ -66,6 +66,34 @@ with col2:
     subject = "Payment Slip for PromptPay"
     email_url = f"mailto:{MY_EMAIL}?subject={subject.replace(' ', '%20')}"
     st.link_button("📧 By Email", email_url, use_container_width=True)
+
+
+st.write("---")
+
+# 1. Tips Section using st.expander
+with st.expander("💡 Pro-Tips for Fast Payment"):
+    st.markdown("""
+    * **Screenshot is King:** Most Thai bank apps (K PLUS, SCB, etc.) let you **'Scan from Gallery'**. Saving the QR is faster than using two phones.
+    * **Check the Name:** Always verify that the name in your bank app matches **{MY_NAME}** before hitting 'Confirm'.
+    * **Open in Browser:** If you are viewing this inside the **Line or Facebook browser**, click the three dots (...) and select **'Open in Chrome/Safari'** for the bank links to work.
+    """)
+
+# 2. The "Don't Click" Secret Section
+st.write("") # Just some spacing
+if st.button("🚫 DO NOT CLICK THIS BUTTON", type="secondary", use_container_width=True):
+    st.balloons()
+    st.markdown("### ☕ Buy Me a Coffee?")
+    st.write("You clicked it! If you find this tool useful, you can support me here:")
+    
+    # Generate your personal account QR (no amount fixed)
+    # This uses your ID but sets amount to 0 or None so user types it in their bank app
+    coffee_payload = qrcode.generate_payload(MY_PROMPTPAY_ID)
+    coffee_qr = qrcode.to_image(coffee_payload).convert("RGB")
+    
+    col_a, col_b, col_c = st.columns([1, 2, 1])
+    with col_b:
+        st.image(np.array(coffee_qr), caption="Support the Developer", width=200)
+        st.info("Scan to transfer any amount. Thank you! 🙏")
 # 7. Mobile Deep Links
 #st.write("---")
 #st.subheader("Open Bank App")
