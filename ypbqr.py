@@ -79,21 +79,21 @@ with st.expander("💡 Pro-Tips for Fast Payment"):
     """)
 
 # 2. The "Don't Click" Secret Section
-st.write("") # Just some spacing
-if st.button("🚫 DO NOT CLICK THIS BUTTON", type="secondary", use_container_width=True):
-    st.balloons()
-    st.markdown("### ☕ Buy Me a Coffee?")
-    st.write("You clicked it! If you find this tool useful, you can support me here:")
+# st.write("") # Just some spacing
+# if st.button("🚫 DO NOT CLICK THIS BUTTON", type="secondary", use_container_width=True):
+#     st.balloons()
+#     st.markdown("### ☕ Buy Me a Coffee?")
+#     st.write("You clicked it! If you find this tool useful, you can support me here:")
     
-    # Generate your personal account QR (no amount fixed)
-    # This uses your ID but sets amount to 0 or None so user types it in their bank app
-    coffee_payload = qrcode.generate_payload(MY_PROMPTPAY_ID)
-    coffee_qr = qrcode.to_image(coffee_payload).convert("RGB")
+#     # Generate your personal account QR (no amount fixed)
+#     # This uses your ID but sets amount to 0 or None so user types it in their bank app
+#     coffee_payload = qrcode.generate_payload(MY_PROMPTPAY_ID)
+#     coffee_qr = qrcode.to_image(coffee_payload).convert("RGB")
     
-    col_a, col_b, col_c = st.columns([1, 2, 1])
-    with col_b:
-        st.image(np.array(coffee_qr), caption="Support the Developer", width=200)
-        st.info("Scan to transfer any amount. Thank you! 🙏")
+#     col_a, col_b, col_c = st.columns([1, 2, 1])
+#     with col_b:
+#         st.image(np.array(coffee_qr), caption="Support the Developer", width=200)
+#         st.info("Scan to transfer any amount. Thank you! 🙏")
 # 7. Mobile Deep Links
 #st.write("---")
 #st.subheader("Open Bank App")
